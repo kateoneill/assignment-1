@@ -31,6 +31,7 @@ const HomePage = (props) => {
       action={(movie) => {
         return <AddToFavoritesIcon movie={movie} />
       }}
+      sx={{backgroundColor:'#45494f', color:'white'}}
     />
 );
 };

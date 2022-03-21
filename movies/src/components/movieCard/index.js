@@ -36,7 +36,7 @@ export default function MovieCard({ movie, action }) { //note the change in this
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, backgroundColor: '#666c75' }}>
       <CardHeader
         avatar={
           movie.favorite ? (
@@ -46,12 +46,14 @@ export default function MovieCard({ movie, action }) { //note the change in this
           ) : null
         }
         title={
-          <Typography variant="h5" component="p">
+          <Typography variant="h5" component="p" sx={{color: 'white'}}>
             {movie.title}{" "}
           </Typography>
         }
       />
       <CardMedia
+        component={Link}
+        to={`/movies/${movie.id}`}
         sx={{ height: 500 }}
         image={
           movie.poster_path
@@ -59,30 +61,31 @@ export default function MovieCard({ movie, action }) { //note the change in this
             : img
         }
       />
+          
       <CardContent>
         <Grid container>
           <Grid item xs={6}>
-            <Typography variant="h6" component="p">
+            <Typography variant="h6" component="p" sx={{color: 'white'}}>
               <CalendarIcon fontSize="small" />
               {movie.release_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6" component="p">
+            <Typography variant="h6" component="p" sx={{color: 'white'}}>
               <StarRateIcon fontSize="small" />
               {"  "} {movie.vote_average}{" "}
             </Typography>
           </Grid>
         </Grid>
       </CardContent>
-      <CardActions disableSpacing>
+      {/* <CardActions disableSpacing>
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }
