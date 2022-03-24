@@ -27,15 +27,15 @@ const TemplateMoviePage = ({ movie, children }) => {
     <>
       <MovieHeader movie={movie} />
 
-      <Grid container spacing={5} sx={{ padding: "15px" }}>
-        <Grid item xs={3}>
+      <Grid container spacing={5} sx={{ padding: "15px", backgroundColor:'#45494f' }}>
+        <Grid item xs={12} md={4}>
           <div sx={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-around",
           }}>
             <ImageList 
-                cols={1}>
+                cols={2} sx={{ height: 780 }}>
                 {images.map((image) => (
                     <ImageListItem key={image.file_path} cols={1}>
                     <img
@@ -48,7 +48,7 @@ const TemplateMoviePage = ({ movie, children }) => {
           </div>
         </Grid>
 
-        <Grid item xs={9}>
+        <Grid item xs={12} md={8}>
           {children}
         </Grid>
       </Grid>
