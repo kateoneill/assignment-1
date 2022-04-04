@@ -10,7 +10,15 @@ import Typography from "@mui/material/Typography";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
-import MovieFilterIcon from '@mui/icons-material/MovieFilter';
+import { useQuery } from "react-query";
+import { getCredits } from "../../api/tmdb-api";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import Grid from "@mui/material/Grid";
+import Spinner from '../spinner';
+import SimilarMovies from "../similarMovies";
+import CastInfo from "../castInfo";
+import { Link } from "react-router-dom";
 
 
 const root = {
@@ -32,41 +40,41 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         sx={{...root, backgroundColor:'#676e78'}}
       >
         <li>
-          <Chip label="Genres" sx={{...chip, backgroundColor:'#9197a1'}} color="primary" />
+          <Chip label="Genres" sx={{...chip, backgroundColor:'#ba388b', color:'white'}} />
         </li>
         {movie.genres.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} sx={{...chip, backgroundColor:'#9197a1'}} />
+            <Chip label={g.name} sx={{...chip, backgroundColor:'#9197a1', color:'white'}} />
           </li>
         ))}
       </Paper>
-      <Paper component="ul" sx={{...root, backgroundColor:'#676e78'}}>
+      <Paper component="ul" sx={{...root, backgroundColor:'#676e78', color:'white'}}>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} sx={{backgroundColor:'#9197a1', color: 'white'}} />
         <Chip
-          sx={{backgroundColor:'#9197a1'}}
+          sx={{backgroundColor:'#9197a1', color:'white'}}
           icon={<MonetizationIcon />}
           label={`${movie.revenue.toLocaleString()}`}
         />
         <Chip
           icon={<StarRate />}
-          sx={{backgroundColor:'#9197a1'}}
+          sx={{backgroundColor:'#9197a1', color:'white'}}
           label={`${movie.vote_average} (${movie.vote_count}`}
         />
         <Chip
           icon={<CalendarTodayIcon/>}
-          sx={{backgroundColor:'#9197a1'}}
+          sx={{backgroundColor:'#9197a1', color:'white'}}
          label={`${movie.release_date}`} />
       </Paper>
       <Paper 
         component="ul" 
-        sx={{...root, backgroundColor:'#676e78'}}
+        sx={{...root, backgroundColor:'#676e78', color:'white'}}
       >
         <li>
-          <Chip label="Production Countries" sx={{...chip}} color="primary" />
+          <Chip label="Production Countries" sx={{...chip, backgroundColor:'#ba388b',color: 'white'}} />
         </li>
         {movie.production_countries.map((c) => (
           <li key={c.name}>
-            <Chip label={c.name} sx={{...chip, backgroundColor:'#9197a1'}} />
+            <Chip label={c.name} sx={{...chip, backgroundColor:'#9197a1', color:'white'}} />
           </li>
         ))}
       </Paper>
@@ -79,6 +87,19 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         {movie.overview}
       </Typography>
 
+      <Typography sx={{paddingTop:'20px', paddingBottom:'20px', color:'white'}}variant="h4" component="h3">
+        Cast
+      </Typography>
+
+      <CastInfo movie={movie} />
+      
+
+      <Typography sx={{paddingTop:'20px', paddingBottom:'20px', color:'white'}}variant="h4" component="h3">
+        Similar
+      </Typography>
+
+      <SimilarMovies movie={movie}/>
+      
       <Fab
         color="secondary"
         variant="extended"

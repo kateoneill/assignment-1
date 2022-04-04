@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 
 const TopMovies = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('discover', getTopMovies)
+  const {  data, error, isLoading, isError }  = useQuery('top_rated', getTopMovies)
 
   if (isLoading) {
     return <Spinner />

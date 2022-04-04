@@ -12,7 +12,8 @@ import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg';
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
-import Spinner from '../spinner'
+import Spinner from '../spinner';
+import CertsFilter from '../certsFilter';
 
 const formControl = 
   {
@@ -88,6 +89,7 @@ const formControl =
             })}
           </Select>
         </FormControl>
+        {/* <CertsFilter props = { props }/> */}
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
