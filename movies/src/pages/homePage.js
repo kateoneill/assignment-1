@@ -1,14 +1,18 @@
-import React from "react";
+import React, {useState}  from "react";
 import { getMovies } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import AddToFavoritesIcon from '../components/cardIcons/addToFavorites';
+import ReactPaginate from "react-paginate";
+import Paper from "@mui/material/Paper";
 
 
 const HomePage = (props) => {
-
+  
+  
   const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
+
 
   if (isLoading) {
     return <Spinner />
@@ -23,16 +27,16 @@ const HomePage = (props) => {
   const favorites = movies.filter(m => m.favorite)
   localStorage.setItem('favorites', JSON.stringify(favorites))
   const addToFavorites = (movieId) => true 
-
-  return (
-    <PageTemplate
-      title="Discover Movies"
-      movies={movies}
-      action={(movie) => {
-        return <AddToFavoritesIcon movie={movie} />
-      }}
-      sx={{backgroundColor:'#45494f', color:'white'}}
-    />
-);
-};
+  
+    return (
+      <PageTemplate
+        title="Discover Movies"
+        movies={movies}
+        action={(movie) => {
+          return <AddToFavoritesIcon movie={movie} />
+        }}
+        sx={{backgroundColor:'#45494f', color:'white'}}
+      />
+  );
+}
 export default HomePage;

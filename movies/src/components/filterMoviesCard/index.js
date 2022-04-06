@@ -13,7 +13,6 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg';
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner';
-import CertsFilter from '../certsFilter';
 
 const formControl = 
   {
@@ -49,6 +48,7 @@ const formControl =
     const handleGenreChange = (e) => {
       handleChange(e, "genre", e.target.value);
     };
+
     
   return (
     <Card 
@@ -89,7 +89,9 @@ const formControl =
             })}
           </Select>
         </FormControl>
-        {/* <CertsFilter props = { props }/> */}
+
+        {/* <RatingSlider handleOnRatingChange={handleOnRatingChange} rating={rating} initialRating={initialRating} /> */}
+
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}

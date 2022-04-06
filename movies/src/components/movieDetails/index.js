@@ -10,15 +10,8 @@ import Typography from "@mui/material/Typography";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
-import { useQuery } from "react-query";
-import { getCredits } from "../../api/tmdb-api";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import Grid from "@mui/material/Grid";
-import Spinner from '../spinner';
 import SimilarMovies from "../similarMovies";
 import CastInfo from "../castInfo";
-import { Link } from "react-router-dom";
 
 
 const root = {

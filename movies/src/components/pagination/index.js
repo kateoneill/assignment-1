@@ -1,21 +1,19 @@
-import React,{ useState} from "react";
-import Movie from "../movieCard";
-import Grid from "@mui/material/Grid";
-import { Paper } from "@mui/material";
-import ReactPaginate from "react-paginate";
+import React, { useState, useEffect } from "react";
+import MovieList from "../movieList";
+import ReactPaginate from 'react-paginate';
 
-const MovieList = ( {movies, action }) => {
+const Pagination = ({ action, movies}) => {
   const [pageNumber, setPageNumber] = useState(0);
   const moviesPerPage = 10;
   const pagesVisited = pageNumber*moviesPerPage;
-  const movieCards = movies.slice(pagesVisited, pagesVisited + moviesPerPage)
-  .map((m) => {
+  let movieList = movies
+  .slice(pagesVisited, pagesVisited + moviesPerPage)
+  .map((movies) => {
     return (
-      <Grid key={m.id} item xs={12} sm={6} md={6} lg={4} xl={6}>
-          <Movie key={m.id} movie={m} action={action} />
-        </Grid>
-    );
-    });
+      <MovieList action={action} movies={movies}></MovieList>
+    )
+  });
+
 
   const pageCount = Math.ceil(movies.length / moviesPerPage);
   const changePage = ({selected}) => {
@@ -24,7 +22,7 @@ const MovieList = ( {movies, action }) => {
 
   return (
     <div>
-      {movieCards}
+      {movieList}
       <ReactPaginate 
         previousLabel={"previous"}
         nextLabel={"Next"}
@@ -37,6 +35,6 @@ const MovieList = ( {movies, action }) => {
     </div>
   
  );
-};
+}
 
-export default MovieList;
+export default Pagination ;
