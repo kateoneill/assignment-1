@@ -72,7 +72,7 @@ const formControl =
           onChange={handleTextChange}
         />
         <FormControl sx={{...formControl}}>
-          <InputLabel id="genre-label">Genre</InputLabel>
+          <InputLabel sx={{paddingTop: '10px'}}id="genre-label">Genre</InputLabel>
           <Select
             labelId="genre-label"
             id="genre-select"
