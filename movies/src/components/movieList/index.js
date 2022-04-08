@@ -11,9 +11,9 @@ const MovieList = ( {movies, action }) => {
   const movieCards = movies.slice(pagesVisited, pagesVisited + moviesPerPage)
   .map((m) => {
     return (
-      <Grid key={m.id} item xs={12} sm={6} md={6} lg={4} xl={6}>
+      <Grid key={movies.id} item xs={12} sm={6} md={6} lg={4} xl={3}>
           <Movie key={m.id} movie={m} action={action} />
-        </Grid>
+      </Grid>
     );
     });
 
@@ -23,19 +23,21 @@ const MovieList = ( {movies, action }) => {
   }
 
   return (
-    <div>
+    <>
       {movieCards}
-      <ReactPaginate 
-        previousLabel={"previous"}
-        nextLabel={"Next"}
+      
+        <ReactPaginate 
+        previousLabel={"<<"}
+        nextLabel={">>"}
         pageCount={pageCount}
         onPageChange={changePage}
         containerClassName="PaginationBtn"
         previousLinkClassName="previousBtn"
         nextLinkClassName="nextBtn"
+        pageClassName="pages"
       />
-    </div>
-  
+    </> 
+        
  );
 };
 

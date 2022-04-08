@@ -29,8 +29,8 @@ const SimilarMovies = ({ movie }) => {
 
     <ImageList item cols={3} sx={{ height: 780 }}>
         {similar.map((similarMovie) => (
-          <Paper key={similarMovie.name} sx={{ backgroundColor:'#676e78', padding:'15px'}} component={Link} to={`/movies/${similarMovie.id}`}>
-            <Typography sx={{color:"white"}} variant="h5" label={similarMovie.originalTitle} > {similarMovie.originalTitle} </Typography>                  
+          <Paper key={similarMovie.name} sx={{ backgroundColor:'#676e78', padding:'15px', textDecoration:'none'}} component={Link} to={`/movies/${similarMovie.id}`}>
+            <Typography sx={{color:"white"}} variant="h5" label={similarMovie.original_title} > {similarMovie.original_title} </Typography>                  
             <ImageListItem key={similarMovie.name} >
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${similarMovie.poster_path}`}

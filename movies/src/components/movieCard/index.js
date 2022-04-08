@@ -78,14 +78,9 @@ export default function MovieCard({ movie, action }) { //note the change in this
           </Grid>
         </Grid>
       </CardContent>
-      {/* <CardActions disableSpacing>
+      <CardActions disableSpacing>
         {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            More Info ...
-          </Button>
-        </Link>
-      </CardActions> */}
+      </CardActions>
     </Card>
   );
 }

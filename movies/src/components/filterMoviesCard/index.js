@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg';
+import img from '../../images/film.jpeg';
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner';
@@ -54,7 +54,7 @@ const formControl =
     <Card 
       sx={{
         maxWidth: 345,
-        backgroundColor: "rgb(204, 204, 0)"
+        backgroundColor: "#ed6c02bd"
       }} 
       variant="outlined">
       <CardContent>
@@ -90,21 +90,12 @@ const formControl =
           </Select>
         </FormControl>
 
-        {/* <RatingSlider handleOnRatingChange={handleOnRatingChange} rating={rating} initialRating={initialRating} /> */}
-
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
         image={img}
         title="Filter"
       />
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
-      </CardContent>
     </Card>
   );
 }

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Chip from "@mui/material/Chip";
+import { ImageListItemBar } from "@mui/material";
 
 
 const CastInfo = ({ movie }) => {
@@ -30,11 +31,11 @@ const CastInfo = ({ movie }) => {
   return (
 
     <Grid container spacing={5} sx={{ padding: "15px", backgroundColor:'#45494f' }}>
-      <ImageList item cols={4} sx={{ height: 780 }}>
+      <ImageList item cols={3} sx={{ height: 780 }}>
         {cast.map((castMember) => (
-              <Paper key={castMember.name} sx={{ backgroundColor:'#676e78', padding:'15px'}} component={Link} to={`/cast/${castMember.id}`}>
-                <Typography sx={{color:"white"}} variant="h5" label={castMember.name} > {castMember.name} </Typography>
-                <Chip sx={{ backgroundColor:"#ba388b", color:"white", marginTop: "10px", marginBottom: "10px" }} variant="h6" label={castMember.character}/>
+              <Paper key={castMember.name} sx={{ backgroundColor:'#676e78', padding:'15px', textDecoration:'none'}} component={Link} to={`/cast/${castMember.id}`}>
+                <Typography sx={{color:"white", textDecoration:'none'}} variant="h5" label={castMember.name} > {castMember.name} </Typography>
+                <Chip sx={{ backgroundColor:"#ed6c02bd", color:"white", marginTop: "10px", marginBottom: "10px" }} variant="h6" label={castMember.character}/>
                   <ImageListItem key={castMember.name}>
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${castMember.profile_path}`}

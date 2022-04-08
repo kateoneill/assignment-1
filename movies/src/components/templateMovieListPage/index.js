@@ -40,6 +40,7 @@ function MovieListPageTemplate({ movies, title, action }) {
           />
         </Grid>
 
+        
         <MovieList action={action} movies={displayedMovies}></MovieList>
 
         {/* <Pagination action={action} movies={displayedMovies} ></Pagination> */}

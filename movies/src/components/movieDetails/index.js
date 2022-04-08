@@ -33,7 +33,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         sx={{...root, backgroundColor:'#676e78'}}
       >
         <li>
-          <Chip label="Genres" sx={{...chip, backgroundColor:'#ba388b', color:'white'}} />
+          <Chip label="Genres" sx={{...chip, backgroundColor:'#ed6c02bd', color:'white'}} />
         </li>
         {movie.genres.map((g) => (
           <li key={g.name}>
@@ -63,7 +63,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         sx={{...root, backgroundColor:'#676e78', color:'white'}}
       >
         <li>
-          <Chip label="Production Countries" sx={{...chip, backgroundColor:'#ba388b',color: 'white'}} />
+          <Chip label="Production Countries" sx={{...chip, backgroundColor:'#ed6c02bd',color: 'white'}} />
         </li>
         {movie.production_countries.map((c) => (
           <li key={c.name}>
