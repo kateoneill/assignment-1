@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
-  const [favorites, setFavorites, playlist, setPlaylist] = useState( [] )
+  const [favorites, setFavorites, watchlist, setWatchlist] = useState( [] )
 
   const addToFavorites = (movie) => {
     let newFavorites = [];
@@ -20,12 +20,12 @@ const MoviesContextProvider = (props) => {
     ) )
   };
 
-  const addToPlaylist = (movie) => {
-    let newPlaylist = [];
-    if (!playlist.includes(movie.id)){
-      newPlaylist = [...playlist, movie.id];
+  const addToWatchlist = (movie) => {
+    let newWatchlist = [];
+    if (!watchlist.includes(movie.id)){
+      newWatchlist = [...watchlist, movie.id];
     }
-    setPlaylist(newPlaylist)
+    setWatchlist(newWatchlist)
   };
 
   return (
@@ -34,7 +34,7 @@ const MoviesContextProvider = (props) => {
         favorites,
         addToFavorites,
         removeFromFavorites,
-        addToPlaylist
+        addToWatchlist,
       }}
     >
       {props.children}

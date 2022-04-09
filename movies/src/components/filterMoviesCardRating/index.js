@@ -22,7 +22,7 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)"
   };
 
-  export default function FilterMoviesCard(props) {
+  export default function FilterMoviesCardRating(props) {
     const { data, error, isLoading, isError } = useQuery("genres", getGenres);
   
     if (isLoading) {
@@ -41,16 +41,8 @@ const formControl =
       e.preventDefault();
       props.onUserInput(type, value); // NEW
     };
-  
-    const handleTextChange = (e, props) => {
-      handleChange(e, "name", e.target.value);
-    };
-  
-    const handleGenreChange = (e) => {
-      handleChange(e, "genre", e.target.value);
-    };
 
-    const handleRatingChange = (e, props) => {
+    const handleRateChange = (e, props) => {
       handleChange(e, "vote_average", e.target.value);
     };
 
@@ -63,38 +55,23 @@ const formControl =
       }} 
       variant="outlined">
       <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-        </Typography>
-        <TextField
-          sx={{...formControl}}
-          id="filled-search"
-          label="Search field"
-          type="search"
-          variant="filled"
-          value={props.titleFilter}
-          onChange={handleTextChange}
-        />
-        <FormControl sx={{...formControl}}>
-          <InputLabel sx={{paddingTop: '10px'}}id="genre-label">Genre</InputLabel>
-          <Select
-            labelId="genre-label"
-            id="genre-select"
-            defaultValue=""
-            value={props.genreFilter}
-            onChange={handleGenreChange}
-          >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
+        <TextField 
+            sx={{...formControl}}
+            id="filled-number"
+            label="Movie Rating"
+            type="number"
+            inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+            variant="filled"
+            value={props.ratingFilter}
+            onChange={handleRateChange}
+    />
+
       </CardContent>
+      <CardMedia
+        sx={{ height: 300 }}
+        image={img}
+        title="Filter"
+      />
     </Card>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
+import FilterMoviesCardRating from "../filterMoviesCardRating"
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
 import Pagination from '../pagination';
@@ -9,6 +10,7 @@ import Pagination from '../pagination';
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
+  const [ratingFilter, setRatingFilter] = useState("");
   const genreId = Number(genreFilter);
 
   const displayedMovies = movies
@@ -17,9 +19,17 @@ function MovieListPageTemplate({ movies, title, action }) {
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+    })
+    .filter((m) => {
+      return m.vote_average >= ratingFilter
     });
 
-  const handleChange = (type, value) => {
+    const handleRateChange = (type, value) => {
+      if (type === "name") setNameFilter(value);
+      else setRatingFilter(value);
+    };
+
+  const handleGenreChange = (type, value) => {
     if (type === "name") setNameFilter(value);
     else setGenreFilter(value);
   };
@@ -34,9 +44,15 @@ function MovieListPageTemplate({ movies, title, action }) {
         
         <Grid key="find" item xs={12} sm={6} md={6} lg={4} xl={3}>
           <FilterCard
-            onUserInput={handleChange}
+            onUserInput={handleGenreChange}
             titleFilter={nameFilter}
             genreFilter={genreFilter}
+          />
+
+          <FilterMoviesCardRating
+            onUserInput={handleRateChange}
+            titleFilter={nameFilter}
+            ratingFilter={ratingFilter}
           />
         </Grid>
 
