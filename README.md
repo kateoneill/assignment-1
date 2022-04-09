@@ -28,16 +28,16 @@ Non applicable
 
 - People Details [ I used the name, biography, birthday and place of birth ] -- seen on /cast/:id
 - Other credits for People [ I pulled the title and poster] -- seen on /cast/:id
-- Top Rated movies -- seen on /movies/top
-- Now Playing movies -- seen on /movies/current
+- Top Rated movies -- seen on /top
+- Now Playing movies -- seen on /current
 - Similar movies being pulled on to the individual movie details pages -- seen on /movies/:id
 - Movie Credits including the name, character name and images -- seen on /movies/:id
 
 ## Routing.
 
 - /cast/:id -- displays individual cast information page
-- /movies/top -- displays top rated movies
-- /movies/current --displays current movies / movies now playing
+- /top -- displays top rated movies
+- /current --displays current movies / movies now playing
 
 ## Independent learning 
 
